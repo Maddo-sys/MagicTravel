@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "magictravel",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authmagictravel240f127c240f127c",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

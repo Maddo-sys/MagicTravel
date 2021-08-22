@@ -10,8 +10,12 @@ import { store } from './store';
 import MapScreen from './screens/MapScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import { withAuthenticator } from 'aws-amplify-react-native'
+import Amplify from 'aws-amplify'
+import config from './src/aws-exports'
+Amplify.configure(config)
 
-export default function App() {
+function App() {
   const Stack = createStackNavigator();
 
   const globalScreenOptions = {
@@ -69,12 +73,6 @@ export default function App() {
   );
 }
 
-// const styles = StyleSheet.sheet({
-//   container:{
-//     flex: 1,
-//     backgroundColor:"#fff",
-//     alignItems: "center",
-//     justifyContent: "center"
-//   },
-// });
+export default withAuthenticator(App);
+
 
