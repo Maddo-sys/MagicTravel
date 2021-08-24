@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Pressable } from 'react-native'
 import tw from 'tailwind-react-native-classnames';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY} from "@env";
@@ -14,14 +14,14 @@ const NavigateCard = () => {
  const dispatch = useDispatch();
  const navigation = useNavigation();
  return (
-  <SafeAreaView
+  <SafeAreaView 
   style={tw`bg-white flex-1`}>
    <Text style={tw`text-center py-5 text-xl`}>
     Good Morning Joshua
     </Text>
    <View style={tw`border-t border-gray-200 flex-shrink`}>
     <View>
-     <GooglePlacesAutocomplete
+     {/* <GooglePlacesAutocomplete
      placeholder="Where to?"
      styles={toInputBoxstyles}
      fetchDetails={true}
@@ -45,7 +45,17 @@ const NavigateCard = () => {
      }}
      
      
-     />
+     /> */}
+
+    <Pressable onPress={()=> navigation.navigate("DestinationSearch")} 
+      style={toInputBoxstyles.container}>  
+      <View style={toInputBoxstyles.textInputContainer}>
+        <Text style={toInputBoxstyles.textInput}>Where To?</Text>
+      </View>
+     
+    </Pressable>
+
+
     </View>
     <NavFavourites/>
     <View 
@@ -84,15 +94,27 @@ const toInputBoxstyles = StyleSheet.create({
  container: {
   backgroundColor: "white",
   paddingTop: 20,
+  padding:5,
   flex: 0,
  },
  textInput: {
   backgroundColor: '#DDDDDF',
   borderRadius: 0,
-  fontSize: 18,
+  fontSize: 20,
+  padding: 10,
+  fontWeight: 'bold',
+  
  },
+
  textInputContainer: {
   paddingHorizontal: 20,
   paddingBottom: 0,
  }
 })
+
+
+
+
+
+
+

@@ -79,7 +79,7 @@ const RideOptionsCard = () => {
         multiplier) / 10
       )
       } */}
-      sh {Math.round((parseInt(travelTimeInformation?.distance.text)* multiplier * 4.35)/10)*10}
+      sh {Math.round((parseInt(travelTimeInformation?.distance?.text)* multiplier * 4.35)/10)*10}
       </Text>
     </TouchableOpacity>
    )}

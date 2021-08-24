@@ -26,16 +26,22 @@ const HomeScreen = () => {
       source={logo}
      />
      <GooglePlacesAutocomplete
-     placeholder="Where from"
+     
+     placeholder="Where From"
      styles={{
       container: {
        flex: 0,
       },
       textInput: {
-       fontSize: 18
+       fontSize: 18,
+       fontWeight: 'bold',
+       backgroundColor: '#eee',
       },
      }}
      enablePoweredByContainer={false}
+     //suppressDefaultStyles
+     //currentLocation={true}
+     //currentLocationLabel='Current location'
      // minLength={2}
      onPress={(data, details = null) =>{
       console.log(data);
@@ -56,7 +62,7 @@ const HomeScreen = () => {
      // debounce={100}
      />
         <NavOptions/>
-        <NavFavourites/>
+        {/* <NavFavourites/> */}
    </View>
   </SafeAreaView>
  )

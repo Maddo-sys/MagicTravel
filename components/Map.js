@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
 import { useDispatch, useSelector } from 'react-redux'
 import tw from 'tailwind-react-native-classnames'
@@ -48,12 +48,14 @@ useEffect(()=> {
  <MapView
  ref={mapRef}
  style={tw`flex-1`}
+ provider={PROVIDER_GOOGLE}
+ showsUserLocation={true}
  mapType="mutedStandard"
   initialRegion={{
    latitude: origin.location.lat,
    longitude: origin.location.lng,
-   latitudeDelta: 0.005,
-   longitudeDelta: 0.005,
+   latitudeDelta: 0.010,
+   longitudeDelta: 0.010,
   }}>
 
    {origin && destination && (
