@@ -16,6 +16,7 @@ import { Linking } from 'react-native';
 import Constants from 'expo-constants'
 import * as IntentLauncher from 'expo-intent-launcher'
 import DestinationSearch from './screens/DestinationSearch';
+import InitialMapScreen from './screens/InitialMapScreen';
 
 Amplify.configure(config);
 
@@ -117,13 +118,27 @@ useEffect(() => {
           headerShown: false,
         }}/>
 
+          {/* <Stack.Screen
+        name="InitialMapScreen"
+        component={InitialMapScreen}
+        options={{
+          headerShown: false,
+        }}/> */}
+
         <Stack.Screen
          name="DestinationSearch"
          component={DestinationSearch}
          options={{
          headerShown: false,
          }}
-     />
+       />
+       
+        {/* <Stack.Screen
+        name="MapScreen"
+        component={MapScreen}
+        options={{
+          headerShown: false,
+        }}/> */}
 
     
       </Stack.Navigator>

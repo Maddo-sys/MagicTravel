@@ -6,7 +6,9 @@ import { Icon } from 'react-native-elements'
 import { FlatList } from 'react-native-gesture-handler'
 import { useSelector } from 'react-redux'
 import tw from 'tailwind-react-native-classnames'
-import { selectTravelTimeInformation } from '../slices/navSlice'
+import { selectDestination, selectOrigin, selectTravelTimeInformation } from '../slices/navSlice'
+import { API, graphqlOperation,Auth } from 'aws-amplify';
+import { createOrder } from '../src/graphql/mutations';
 
 const data = [
  {
@@ -36,7 +38,38 @@ const RideOptionsCard = () => {
  const navigation = useNavigation();
  const [selected, setSelected] = useState(null);
  const travelTimeInformation = useSelector(selectTravelTimeInformation);
- let distance;
+ const origin = useSelector(selectOrigin);
+ const destination = useSelector(selectDestination);
+ //let distance;
+
+ const onPress = async ()=> {
+   try{
+    
+    const userInfo = await Auth.currentAuthenticatedUser();
+    const date = new Date();
+    const input = {
+      createdAt: date.toISOString(),
+      type:selected.title,
+      originLat:origin.location.lat,
+      originLng:origin.location.lng,
+      destLat:destination.location.lat,
+      destLng:destination.location.lng,
+      userId: userInfo.attributes.sub,
+      carId:"1",
+    }
+     const response = await API.graphql(
+       graphqlOperation(
+         createOrder, {
+           input: input
+         }
+       )
+     )
+     console.log(response);
+     console.warn("sent to DB");
+   }catch(e){
+     console.error(e)
+   }
+ }
  return (
   <SafeAreaView style={tw`bg-white flex-grow`}>
    <View>
@@ -85,7 +118,8 @@ const RideOptionsCard = () => {
    )}
    />
    <View style={tw`mt-auto border-t border-gray-200`}>
-    <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}>
+    <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}
+    onPress={onPress}>
      <Text style={tw`text-center text-white text-xl`}>Choose {selected?.title}</Text>
     </TouchableOpacity>
    </View>

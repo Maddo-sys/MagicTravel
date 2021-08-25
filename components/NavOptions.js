@@ -18,6 +18,7 @@ const data = [
   title:"Travel Now",
   image:travelImg,
   screen:"MapScreen",
+  // screen:"InitialMapScreen"
  },
  {
   id: "789",

@@ -44,8 +44,8 @@ const HomeScreen = () => {
      //currentLocationLabel='Current location'
      // minLength={2}
      onPress={(data, details = null) =>{
-      console.log(data);
-      console.log(details);
+      // console.log(data);
+      // console.log(details);
       dispatch (setOrigin({
        location: details.geometry.location,
        description:data.description,

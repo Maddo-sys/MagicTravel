@@ -5,17 +5,17 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
 import HomeMap from '../components/HomeMap';
-import Map from '../components/Map';
+import NavFavourites from '../components/NavFavourites';
 import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
 
-
-
-const MapScreen = () => {
+const InitialMapScreen = () => {
 
  const Stack = createStackNavigator();
  const navigation = useNavigation();
+
  return (
+ 
   <View>
 
    <TouchableOpacity 
@@ -25,12 +25,11 @@ const MapScreen = () => {
     <Icon name="menu"/>
    </TouchableOpacity>
    <View style={tw`h-1/2`}>
-    <Map/>
-    {/* <HomeMap/> */}
+    <HomeMap/>
    </View>
    <View style={tw`h-1/2`}>
-    
-    <Stack.Navigator>
+    <NavigateCard/>
+    {/* <Stack.Navigator>
      <Stack.Screen
      name="NavigateCard"
      component={NavigateCard}
@@ -46,12 +45,12 @@ const MapScreen = () => {
       headerShown: false,
      }}
      />
-    </Stack.Navigator>
+    </Stack.Navigator> */}
    </View>
   </View>
  )
 }
 
-export default MapScreen
+export default InitialMapScreen
 
 const styles = StyleSheet.create({})

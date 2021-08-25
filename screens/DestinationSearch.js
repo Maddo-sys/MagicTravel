@@ -58,7 +58,8 @@ const [destinationPlace, setDestinationPlace]= useState('');
  const checkNavigation = ()=>{
 
   if(originPlace && destinationPlace) {
-     navigation.navigate('RideOptionsCard')
+      navigation.navigate('RideOptionsCard')
+     //navigation.navigate('MapScreen')
    }
  }
  useEffect(() => {
